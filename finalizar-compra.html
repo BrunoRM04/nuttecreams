@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutteCreams | Detalles De Envio</title>
+    <link rel="shortcut icon" href="public/img/logotipo/icono web.png">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body style="background-color: #e3b98d;">
+
+    <header class="encabezado-principal">
+        <div class="contenedor-logo">
+            <a href="index.html"><img src="public/img/logotipo/logotipo marron.png" alt="Logotipo"
+                    class="logo-sitio"></a>
+        </div>
+        <div class="iconos-navegacion">
+            <div class="contenedor-saludo-usuario" id="contenedorSaludo">
+                <i class='bx bx-user icono-cuenta' id="iconoCuenta"></i>
+            </div>
+
+            <div class="contenedor-icono-carrito">
+                <i class='bx bx-shopping-bag icono-carrito'></i>
+                <span class="contador-carrito" id="contadorCarrito">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="carrito-lateral" id="carritoLateral">
+        <div class="carrito-cabecera">
+            <h2 class="titulo-carrito">Tu Bolsa</h2>
+            <button class="boton-cerrar-carrito" id="cerrarCarrito">&times;</button>
+        </div>
+        <div class="carrito-contenido" id="carritoContenido">
+            <p class="carrito-vacio">Tu bolsa está vacía.</p>
+        </div>
+        <div class="carrito-pie" id="carritoPie" style="display: none;">
+            <div class="subtotal-carrito">
+                <span>Subtotal:</span>
+                <span id="subtotalCarrito">UYU $0</span>
+            </div>
+            <div class="botones-carrito">
+                <button class="boton-finalizar-compra">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+    <div class="fondo-oscuro" id="fondoOscuro"></div>
+
+    <main>
+
+        <section class="envio-detalles">
+            <h2 class="titulo-productos">Detalles De Envío</h2>
+            <div class="linea-decorativa"></div>
+
+            <form id="formulario-envio">
+
+                <div class="grupo-campos">
+                    <input class="input-envio" type="text" placeholder="Nombre y Apellido" required>
+                    <input class="input-envio" type="text" placeholder="Cédula / Documento" required>
+                </div>
+
+                <div class="grupo-campos">
+                    <input class="input-envio" type="email" placeholder="Correo Electrónico" required>
+                    <input class="input-envio" type="tel" placeholder="Teléfono de Contacto" required>
+                </div>
+
+                <div class="grupo-campos">
+                    <input class="input-envio" type="text" placeholder="Calle y Número" required>
+                    <input class="input-envio" type="text" placeholder="Apartamento (opcional)">
+                </div>
+
+                <div class="grupo-campos">
+                    <select class="input-envio" required>
+                        <option value="" disabled selected>Seleccione Departamento</option>
+                        <option value="artigas">Artigas</option>
+                        <option value="canelones">Canelones</option>
+                        <option value="cerro_largo">Cerro Largo</option>
+                        <option value="colonia">Colonia</option>
+                        <option value="durazno">Durazno</option>
+                        <option value="flores">Flores</option>
+                        <option value="florida">Florida</option>
+                        <option value="lavalleja">Lavalleja</option>
+                        <option value="maldonado">Maldonado</option>
+                        <option value="montevideo">Montevideo</option>
+                        <option value="paysandu">Paysandú</option>
+                        <option value="rio_negro">Río Negro</option>
+                        <option value="rivera">Rivera</option>
+                        <option value="rocha">Rocha</option>
+                        <option value="salto">Salto</option>
+                        <option value="san_jose">San José</option>
+                        <option value="soriano">Soriano</option>
+                        <option value="tacuarembo">Tacuarembó</option>
+                        <option value="treinta_y_tres">Treinta y Tres</option>
+                    </select>
+                    <input class="input-envio" type="text" placeholder="Código Postal" required>
+                </div>
+
+                <div class="grupo-campo-unico">
+                    <select class="input-envio" required>
+                        <option value="" disabled selected>Seleccione Franja Horaria de Entrega</option>
+                        <option value="mañana">Mañana (08:00 - 12:00)</option>
+                        <option value="tarde">Tarde (12:00 - 18:00)</option>
+                        <option value="noche">Noche (18:00 - 21:00)</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo-unico">
+                    <textarea class="input-envio" placeholder="Notas para el repartidor (opcional)" rows="3"></textarea>
+                </div>
+
+                <div class="grupo-campo-unico zona-puntos" id="zona-puntos" style="display: none;">
+                    <div class="info-puntos">
+                        <p><strong>Tus puntos disponibles:</strong> <span id="puntos-usuario">0</span> pts</p>
+                        <label for="input-puntos">¿Cuántos puntos deseas usar?</label>
+                        <input type="number" id="input-puntos" class="input-envio"
+                            placeholder="Ingrese cantidad de puntos" min="0">
+                        <small class="texto-ayuda">Recuerda: 1 punto = 1 peso de descuento.</small>
+                    </div>
+                </div>
+
+                <div class="grupo-campo-unico resumen-compra-container">
+                    <h3 class="titulo-subseccion">Resumen de tu Compra</h3>
+                    <div id="resumen-compra" class="resumen-compra">
+                    </div>
+                </div>
+
+                <div class="grupo-campo-unico">
+                    <select class="input-envio" id="metodo-pago" required>
+                        <option value="" disabled selected>Seleccione Método de Pago</option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta_credito">Tarjeta de Crédito</option>
+                        <option value="tarjeta_debito">Tarjeta de Débito</option>
+                    </select>
+                </div>
+
+                <div id="campo-monto" class="grupo-campo-unico" style="display: none;">
+                    <input class="input-envio" type="number" placeholder="¿Con qué monto pagará?">
+                </div>
+
+                <div class="grupo-campo-unico">
+                    <button type="submit" class="boton-confirmar-compra">Confirmar y Pagar</button>
+                </div>
+
+            </form>
+        </section>
+
+        <div id="pedido-realizado" class="pedido-realizado" style="display: none;">
+            <i class='bx bx-check-circle icono-pedido'></i>
+            <h2 class="texto-pedido">¡Pedido realizado!</h2>
+        </div>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor-footer">
+            <p class="derechos-autor">&copy; 2025 NutteCreams. Todos los derechos reservados.</p>
+            <div class="redes-sociales">
+                <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+            </div>
+            <p class="aviso-tienda">No contamos con tienda física. Solo ventas a través de e-commerce.</p>
+            <p class="contacto">Teléfono: +598 99 043 009 | Email: contacto@nuttecreams.com</p>
+        </div>
+    </footer>
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZ7ZVz4n38gpFJF3o-92pLquoshy1LJXU",
+            authDomain: "nuttecreams.firebaseapp.com",
+            projectId: "nuttecreams",
+            storageBucket: "nuttecreams.appspot.com",
+            messagingSenderId: "772138766185",
+            appId: "1:772138766185:web:0f1dd8b60255096b75f7f8",
+            measurementId: "G-T2966XW90N"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Variables
+        const metodoPago = document.getElementById('metodo-pago');
+        const campoMonto = document.getElementById('campo-monto');
+        const formularioEnvio = document.getElementById('formulario-envio');
+        const pedidoRealizado = document.getElementById('pedido-realizado');
+        const inputPuntos = document.getElementById('input-puntos');
+        const resumenCompra = document.getElementById('resumen-compra');
+
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let puntosUsuario = 0;
+        let descuentoAplicado = 0;
+
+        // Mostrar y ocultar campo monto efectivo
+        metodoPago.addEventListener('change', function () {
+            campoMonto.style.display = this.value === 'efectivo' ? 'block' : 'none';
+        });
+
+        // Funciones carrito
+        function calcularSubtotal() {
+            return carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
+        }
+
+        function mostrarResumenCompra(descuento = 0) {
+            resumenCompra.innerHTML = '';
+            if (carrito.length === 0) {
+                resumenCompra.innerHTML = '<p>No tienes productos en tu bolsa.</p>';
+                return;
+            }
+
+            carrito.forEach(producto => {
+                const item = document.createElement('div');
+                item.classList.add('item-resumen');
+                item.innerHTML = `
+            <p>${producto.nombre} x${producto.cantidad}</p>
+            <p>UYU $${producto.precio * producto.cantidad}</p>
+        `;
+                resumenCompra.appendChild(item);
+            });
+
+            const subtotal = calcularSubtotal();
+
+            if (descuento > 0) {
+                const descuentoDiv = document.createElement('div');
+                descuentoDiv.classList.add('item-resumen');
+                descuentoDiv.innerHTML = `
+            <p style="color: green;">Descuento por puntos:</p>
+            <p style="color: green;">-UYU $${descuento}</p>
+        `;
+                resumenCompra.appendChild(descuentoDiv);
+            }
+
+            const totalDiv = document.createElement('div');
+            totalDiv.classList.add('item-resumen');
+            totalDiv.innerHTML = `<strong>Total a pagar:</strong> <strong>UYU $${Math.max(0, subtotal - descuento)}</strong>`;
+            resumenCompra.appendChild(totalDiv);
+        }
+
+        // Escuchar cambios en puntos
+        function prepararUsoPuntos() {
+            inputPuntos.addEventListener('input', () => {
+                let puntosIngresados = parseInt(inputPuntos.value) || 0;
+                if (puntosIngresados > puntosUsuario) puntosIngresados = puntosUsuario;
+                if (puntosIngresados < 0) puntosIngresados = 0;
+
+                descuentoAplicado = puntosIngresados;
+                mostrarResumenCompra(descuentoAplicado);
+            });
+        }
+
+        // Mostrar saludo o login
+        auth.onAuthStateChanged(async (usuario) => {
+            const contenedorSaludo = document.getElementById('contenedorSaludo');
+
+            if (usuario) {
+                const correo = usuario.email;
+                try {
+                    const docUsuario = await db.collection('usuarios').doc(usuario.uid).get();
+                    if (docUsuario.exists) {
+                        puntosUsuario = docUsuario.data().puntos || 0;
+                        contenedorSaludo.innerHTML = `
+                    <span class="texto-saludo">¡Hola, ${correo.split('@')[0]}!</span>
+                    <span class="badge-puntos">${puntosUsuario} pts</span>
+                `;
+                        document.getElementById('puntos-usuario').textContent = puntosUsuario;
+                        document.getElementById('zona-puntos').style.display = 'block';
+                        prepararUsoPuntos();
+                    }
+                } catch (error) {
+                    console.error('Error al obtener puntos:', error.message);
+                }
+            } else {
+                contenedorSaludo.innerHTML = `
+            <a href="register.html"><i class='bx bx-user icono-cuenta'></i></a>
+        `;
+            }
+        });
+
+        // Guardar pedido
+        async function guardarPedido(usuario) {
+            const nombre = formularioEnvio.querySelector('input[placeholder="Nombre y Apellido"]').value;
+            const cedula = formularioEnvio.querySelector('input[placeholder="Cédula / Documento"]').value;
+            const correo = formularioEnvio.querySelector('input[placeholder="Correo Electrónico"]').value;
+            const telefono = formularioEnvio.querySelector('input[placeholder="Teléfono de Contacto"]').value;
+            const calleNumero = formularioEnvio.querySelector('input[placeholder="Calle y Número"]').value;
+            const apartamento = formularioEnvio.querySelector('input[placeholder="Apartamento (opcional)"]').value;
+            const codigoPostal = formularioEnvio.querySelector('input[placeholder="Código Postal"]').value;
+            const selects = formularioEnvio.querySelectorAll('select');
+            const departamento = selects[0] ? selects[0].value : '';
+            const franjaHoraria = selects[1] ? selects[1].value : '';
+            const notasRepartidor = formularioEnvio.querySelector('textarea').value;
+
+            const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
+            const metodoSeleccionado = metodoPago.value;
+            const inputMonto = campoMonto.querySelector('input');
+            const montoPagoEfectivo = metodoSeleccionado === 'efectivo' ? (inputMonto ? inputMonto.value : null) : null;
+
+            const subtotal = calcularSubtotal();
+            const puntosUsados = parseInt(inputPuntos.value) || 0;
+            const totalFinal = Math.max(0, subtotal - puntosUsados);
+
+            const pedido = {
+                usuarioId: usuario ? usuario.uid : "no_registrado",
+                nombre,
+                cedula,
+                correo,
+                telefono,
+                direccion: { calleNumero, apartamento, departamento, codigoPostal },
+                franjaHoraria,
+                notas: notasRepartidor,
+                carrito: carritoGuardado,
+                metodoPago: metodoSeleccionado || "puntos",
+                montoPagoEfectivo,
+                subtotal,
+                puntosUsados,
+                totalFinal,
+                fecha: new Date(),
+                estado: 'pendiente'
+            };
+
+            await db.collection('pedidos_realizados').add(pedido);
+        }
+
+        // Formulario de compra
+        formularioEnvio.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            try {
+                const usuario = auth.currentUser; // Puede ser null
+                await guardarPedido(usuario);
+
+                const subtotal = calcularSubtotal();
+                const puntosUsados = parseInt(inputPuntos.value) || 0;
+                const totalFinal = Math.max(0, subtotal - puntosUsados);
+                const metodoSeleccionado = metodoPago.value;
+                const correo = formularioEnvio.querySelector('input[placeholder="Correo Electrónico"]').value;
+
+                if (totalFinal === 0 || metodoSeleccionado === 'efectivo') {
+                    mostrarPedidoRealizado();
+                } else if (metodoSeleccionado === 'tarjeta_credito' || metodoSeleccionado === 'tarjeta_debito') {
+                    const accessToken = 'APP_USR-2355348622689850-042718-b1ea7e528b6971a0426416a5fbb8f62f-2388103664'; // Cambia por el tuyo
+
+                    const preferenceData = {
+                        items: [{
+                            title: "Compra en NutteCreams",
+                            quantity: 1,
+                            currency_id: "UYU",
+                            unit_price: totalFinal
+                        }],
+                        payer: { email: correo },
+                        back_urls: {
+                            success: "https://tusitio.com/success.html",
+                            failure: "https://tusitio.com/failure.html",
+                            pending: "https://tusitio.com/pending.html"
+                        },
+                        auto_return: "approved",
+                        external_reference: `pedido-${new Date().getTime()}`
+                    };
+
+                    const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(preferenceData)
+                    });
+                    const data = await response.json();
+
+                    if (data.init_point) {
+                        window.location.href = data.init_point;
+                    } else {
+                        alert('Error creando orden de pago.');
+                    }
+                } else {
+                    localStorage.removeItem('carrito');
+                    window.location.href = "index.html";
+                }
+            } catch (error) {
+                console.error('Error al procesar compra:', error.message);
+                alert('Hubo un error. Intentalo de nuevo.');
+            }
+        });
+
+        // Mostrar mensaje de pedido realizado
+        function mostrarPedidoRealizado() {
+            pedidoRealizado.style.display = 'flex';
+            setTimeout(() => pedidoRealizado.classList.add('mostrar'), 100);
+            setTimeout(() => {
+                localStorage.removeItem('carrito');
+                window.location.href = "index.html";
+            }, 4000);
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarResumenCompra();
+        });
+
+    </script>
+
+</body>
+
+</html>

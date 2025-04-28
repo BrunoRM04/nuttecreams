@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutteCreams | Iniciar Sesión</title>
+    <link rel="shortcut icon" href="public/img/logotipo/icono web.png">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body style="background-color: #e3b98d;">
+
+    <header class="encabezado-principal">
+
+        <div class="contenedor-logo">
+            <a href="index.html"><img src="public/img/logotipo/logotipo marron.png" alt="Logotipo"
+                    class="logo-sitio"></a>
+        </div>
+        <div class="iconos-navegacion">
+            <div class="contenedor-saludo-usuario" id="contenedorSaludo">
+                <i class='bx bx-user icono-cuenta' id="iconoCuenta"></i>
+            </div>
+
+            <div class="contenedor-icono-carrito">
+                <i class='bx bx-shopping-bag icono-carrito'></i>
+                <span class="contador-carrito" id="contadorCarrito">0</span>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="carrito-lateral" id="carritoLateral">
+        <div class="carrito-cabecera">
+            <h2 class="titulo-carrito">Tu Bolsa</h2>
+            <button class="boton-cerrar-carrito" id="cerrarCarrito">&times;</button>
+        </div>
+        <div class="carrito-contenido" id="carritoContenido">
+            <p class="carrito-vacio">Tu bolsa está vacía.</p>
+        </div>
+        <div class="carrito-pie" id="carritoPie" style="display: none;">
+            <div class="subtotal-carrito">
+                <span>Subtotal:</span>
+                <span id="subtotalCarrito">UYU $0</span>
+            </div>
+            <div class="botones-carrito">
+                <button class="boton-finalizar-compra">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+    <div class="fondo-oscuro" id="fondoOscuro"></div>
+
+    <main>
+
+        <div class="registro-container">
+            <h1>¡Iniciar Sesión!</h1>
+            <form class="registro-form">
+                <div class="input-group">
+                    <i class='bx bx-envelope registro-icono'></i>
+                    <input type="email" placeholder="Ingresa tu correo de Gmail" required>
+                </div>
+
+                <div class="input-group">
+                    <i class='bx bx-lock registro-icono'></i>
+                    <input id="passwordInput" type="password" placeholder="Crea una contraseña" required minlength="6">
+                    <i class='bx bx-show registro-icono-ver' id="togglePassword"></i>
+                </div>
+
+                <button type="submit" class="registro-boton">Iniciar Sesión</button>
+
+                <p class="registro-condiciones">
+                    ¡Felicidades! Si ya estás registrado en nuestra web, podrás acceder al 10% de descuento en todos
+                    nuestros productos. Además,
+                    por cada producto que compres sumas 100 puntos que podes canjear en tu próxima compra y pagar menos.
+                </p>
+                <a href="register.html" class="registro-login-link">¿No tienes una cuenta? Registrate</a>
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="pie-pagina">
+
+        <div class="contenedor-footer">
+            <p class="derechos-autor">&copy; 2025 NutteCreams. Todos los derechos reservados.</p>
+            <div class="redes-sociales">
+                <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+            </div>
+            <p class="aviso-tienda">No contamos con tienda física. Solo ventas a través de e-commerce.</p>
+            <p class="contacto">Teléfono: +598 99 043 009 | Email: contacto@nuttecreams.com</p>
+        </div>
+        
+    </footer>
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZ7ZVz4n38gpFJF3o-92pLquoshy1LJXU",
+            authDomain: "nuttecreams.firebaseapp.com",
+            projectId: "nuttecreams",
+            storageBucket: "nuttecreams.firebasestorage.app",
+            messagingSenderId: "772138766185",
+            appId: "1:772138766185:web:0f1dd8b60255096b75f7f8",
+            measurementId: "G-T2966XW90N"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+    </script>
+
+    <script>
+
+        const botonCarrito = document.querySelector('.icono-carrito');
+        const carritoLateral = document.getElementById('carritoLateral');
+        const cerrarCarrito = document.getElementById('cerrarCarrito');
+        const fondoOscuro = document.getElementById('fondoOscuro');
+        const botonesAñadir = document.querySelectorAll('.boton-carrito');
+        const carritoContenido = document.getElementById('carritoContenido');
+        const subtotalCarrito = document.getElementById('subtotalCarrito');
+        const carritoPie = document.getElementById('carritoPie');
+        const contadorCarrito = document.getElementById('contadorCarrito');
+
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        function abrirCarrito() {
+            carritoLateral.classList.add('abierto');
+            fondoOscuro.classList.add('activo');
+            mostrarCarrito();
+        }
+
+        function cerrarCarritoFuncion() {
+            carritoLateral.classList.remove('abierto');
+            fondoOscuro.classList.remove('activo');
+        }
+
+        function agregarProducto(nombre, precio, imagen) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, imagen, cantidad: 1 });
+            }
+            guardarCarrito();
+            mostrarCarrito();
+        }
+
+        function eliminarProducto(nombre) {
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            guardarCarrito();
+            mostrarCarrito();
+        }
+
+        function guardarCarrito() {
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+
+        function calcularSubtotal() {
+            return carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+        }
+
+        function contarProductos() {
+            return carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        }
+
+        function mostrarCarrito() {
+            carritoContenido.innerHTML = '';
+
+            if (carrito.length === 0) {
+                carritoContenido.innerHTML = '<p class="carrito-vacio">Tu bolsa está vacía.</p>';
+                carritoPie.style.display = 'none';
+            } else {
+                carrito.forEach(producto => {
+                    const div = document.createElement('div');
+                    div.classList.add('carrito-producto');
+                    div.innerHTML = `
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <div class="carrito-detalles">
+                    <p class="nombre-producto">${producto.nombre}</p>
+                    <p class="precio-producto">UYU $${producto.precio} x ${producto.cantidad}</p>
+                </div>
+                <button class="boton-eliminar-producto" onclick="eliminarProducto('${producto.nombre}')">&times;</button>
+            `;
+                    carritoContenido.appendChild(div);
+                });
+                subtotalCarrito.textContent = `UYU $${calcularSubtotal()}`;
+                carritoPie.style.display = 'block';
+            }
+
+            contadorCarrito.textContent = contarProductos();
+        }
+
+        botonCarrito.addEventListener('click', abrirCarrito);
+        cerrarCarrito.addEventListener('click', cerrarCarritoFuncion);
+        fondoOscuro.addEventListener('click', cerrarCarritoFuncion);
+
+        botonesAñadir.forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                const tarjeta = e.target.closest('.tarjeta-producto');
+                const nombre = tarjeta.querySelector('.titulo-producto').textContent;
+                const precioTexto = tarjeta.querySelector('.precio-producto span').textContent;
+                const precio = parseInt(precioTexto.replace(/\D/g, ''));
+                const imagen = tarjeta.querySelector('.imagen-producto img').getAttribute('src');
+                agregarProducto(nombre, precio, imagen);
+            });
+        });
+
+        mostrarCarrito();
+
+        // CARRITO Y BOLSA //
+
+        // VER Y DESVER CONTRASEÑA //
+
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+
+        togglePassword.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            togglePassword.classList.toggle('bx-show');
+            togglePassword.classList.toggle('bx-hide');
+        });
+
+        // VER Y DESVER CONTRASEÑA //
+
+        // LOGICA DE REGISTRO Y PUNTOS DEL USUARIO //
+
+        const formularioLogin = document.querySelector('.registro-form');
+        const inputCorreoLogin = document.querySelector('.registro-form input[type="email"]');
+        const inputContraseñaLogin = document.getElementById('passwordInput');
+
+        formularioLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const correo = inputCorreoLogin.value.trim();
+            const contraseña = inputContraseñaLogin.value.trim();
+
+            try {
+                await auth.signInWithEmailAndPassword(correo, contraseña);
+
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error al iniciar sesión:', error.message);
+                alert('Hubo un error: ' + error.message);
+            }
+        });
+
+
+        const contenedorSaludo = document.getElementById('contenedorSaludo');
+
+        auth.onAuthStateChanged(async (usuario) => {
+            if (usuario) {
+                const correo = usuario.email;
+
+                try {
+                    const docUsuario = await db.collection('usuarios').doc(usuario.uid).get();
+                    const puntos = docUsuario.exists ? docUsuario.data().puntos : 0;
+
+                    const correoCorto = correo.split('@')[0];
+
+                    contenedorSaludo.innerHTML = `
+        <span class="texto-saludo">¡Hola, ${correoCorto}!</span>
+        <span class="badge-puntos">${puntos} pts</span>
+    `;
+                } catch (error) {
+                    console.error('Error al obtener puntos:', error.message);
+                }
+
+            } else {
+                contenedorSaludo.innerHTML = `
+    <a href="register.html"><i class='bx bx-user icono-cuenta'></i></a>
+    `;
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

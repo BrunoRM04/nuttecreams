@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutteCreams | Inicio</title>
+    <link rel="shortcut icon" href="public/img/logotipo/icono web.png">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="encabezado-principal">
+        <div class="contenedor-logo">
+            <a href="index.html"><img src="public/img/logotipo/logotipo marron.png" alt="Logotipo"
+                    class="logo-sitio"></a>
+        </div>
+        <div class="iconos-navegacion">
+            <div class="contenedor-saludo-usuario" id="contenedorSaludo">
+                <i class='bx bx-user icono-cuenta' id="iconoCuenta"></i>
+            </div>
+
+            <div class="contenedor-icono-carrito">
+                <i class='bx bx-shopping-bag icono-carrito'></i>
+                <span class="contador-carrito" id="contadorCarrito">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="carrito-lateral" id="carritoLateral">
+        <div class="carrito-cabecera">
+            <h2 class="titulo-carrito">Tu Bolsa</h2>
+            <button class="boton-cerrar-carrito" id="cerrarCarrito">&times;</button>
+        </div>
+        <div class="carrito-contenido" id="carritoContenido">
+            <p class="carrito-vacio">Tu bolsa está vacía.</p>
+        </div>
+        <div class="carrito-pie" id="carritoPie" style="display: none;">
+            <div class="subtotal-carrito">
+                <span>Subtotal:</span>
+                <span id="subtotalCarrito">UYU $0</span>
+            </div>
+            <div class="botones-carrito">
+                <a href="finalizar-compra.html"><button class="boton-finalizar-compra">Finalizar Compra</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="fondo-oscuro" id="fondoOscuro"></div>
+
+    <main>
+
+        <div class="contenedor-carrusel">
+            <div class="carrusel">
+                <div class="diapositiva activa">
+                    <a href="register.html"><img src="public/img/promos/promo-1.png" alt="Banner 1"
+                            class="imagen-banner"></a>
+                </div>
+                <div class="diapositiva">
+                    <img src="public/img/promos/promo-2.png" alt="Banner 2" class="imagen-banner">
+                </div>
+            </div>
+            <button class="boton-carrusel anterior"><i class='bx bx-chevron-left'></i></button>
+            <button class="boton-carrusel siguiente"><i class='bx bx-chevron-right'></i></button>
+        </div>
+
+        <section class="seccion-ofertas">
+            <h2 class="titulo-productos">Nuestras Ofertas</h2>
+            <div class="linea-decorativa"></div>
+
+            <div class="contenedor-ofertas">
+                <button class="flecha-izquierda">&#10094;</button>
+
+                <div class="carrusel-productos">
+                    <div class="tarjeta-producto">
+                        <div class="imagen-producto">
+                            <img src="public/img/ofertas/oferta-1.jpg" alt="Crema de Maní">
+                            <span class="etiqueta-oferta">Oferta N°1 - 350g</span>
+                        </div>
+                        <div class="contenido-producto">
+                            <h3 class="titulo-producto">Crema de Maní</h3>
+                            <p class="descripcion-producto">Maní tostado, azúcar mascabo, aceite de coco, sal marina y
+                                canela.</p>
+                            <div class="informacion-extra">
+                                <span><i class='bx bx-leaf'></i> Vegano</span>
+                                <span><i class='bx bx-food-menu'></i> Sin conservantes</span>
+                                <span><i class='bx bx-no-entry'></i> Sin TACC</span>
+                            </div>
+                            <div class="precio-producto"><span>UYU $10</span></div>
+                            <div class="boton-acciones">
+                                <button class="boton-carrito"><i class='bx bx-cart'></i> Añadir al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-producto">
+                        <div class="imagen-producto">
+                            <img src="public/img/ofertas/oferta-2.jpg" alt="Crema de Maní x2">
+                            <span class="etiqueta-oferta">Oferta N°2 - 350g</span>
+                        </div>
+                        <div class="contenido-producto">
+                            <h3 class="titulo-producto">Crema de Maní x2</h3>
+                            <p class="descripcion-producto">Maní tostado, azúcar mascabo, aceite de coco, sal marina y
+                                canela.</p>
+                            <div class="informacion-extra">
+                                <span><i class='bx bx-leaf'></i> Vegano</span>
+                                <span><i class='bx bx-food-menu'></i> Sin conservantes</span>
+                                <span><i class='bx bx-no-entry'></i> Sin TACC</span>
+                            </div>
+                            <div class="precio-producto"><span>UYU $450</span></div>
+                            <div class="boton-acciones">
+                                <button class="boton-carrito"><i class='bx bx-cart'></i> Añadir al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tarjeta-producto">
+                        <div class="imagen-producto">
+                            <img src="public/img/ofertas/oferta-3.jpg" alt="Crema de Maní x3">
+                            <span class="etiqueta-oferta">Oferta N°3 - 350g</span>
+                        </div>
+                        <div class="contenido-producto">
+                            <h3 class="titulo-producto">Crema de Maní x3</h3>
+                            <p class="descripcion-producto">Maní tostado, azúcar mascabo, aceite de coco, sal marina y
+                                canela.</p>
+                            <div class="informacion-extra">
+                                <span><i class='bx bx-leaf'></i> Vegano</span>
+                                <span><i class='bx bx-food-menu'></i> Sin conservantes</span>
+                                <span><i class='bx bx-no-entry'></i> Sin TACC</span>
+                            </div>
+                            <div class="precio-producto"><span>UYU $650</span></div>
+                            <div class="boton-acciones">
+                                <button class="boton-carrito"><i class='bx bx-cart'></i> Añadir al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="flecha-derecha">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="seccion-preguntas">
+            <h2 class="titulo-preguntas">Preguntas Frecuentes</h2>
+            <div class="decoracion-preguntas"></div>
+        </section>
+
+        <div class="contenedor-acordeon">
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Cómo obtengo el 10% de descuento en mi compra?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Solo tenés que registrarte en nuestro sitio web y automáticamente accedés al 10% de descuento en tus
+                compras.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Qué son los puntos y cómo los uso?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Por cada producto que compres sumás 100 puntos. Estos puntos los podés canjear en tu próxima compra para
+                pagar menos.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Realizan envíos?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Sí, hacemos envíos gratuitos en Montevideo. Para el interior del país, enviamos a través de DAC.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Cuándo recibiré mi pedido si compro hoy?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Si tu pedido se realiza antes de las 14:00, se entrega en el mismo día. Si es después, la entrega se
+                realiza al día siguiente.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Los productos son aptos para veganos y personas celíacas?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Sí, todos nuestros productos son aptos veganos, sin conservantes y libres de TACC.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Puedo personalizar mi pedido?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Claro, podés pedir que quitemos algún ingrediente que no desees en tu pedido.
+            </div>
+
+            <div class="acordeon-pregunta" onclick="alternarAcordeon(this)">
+                <span class="acordeon-texto">¿Qué formas de pago aceptan?</span>
+                <span class="acordeon-flecha">&#9662;</span>
+            </div>
+            <div class="acordeon-respuesta">
+                Aceptamos efectivo y todas las tarjetas de crédito y débito, hasta en 12 cuotas sin interés.
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor-footer">
+            <p class="derechos-autor">&copy; 2025 NutteCreams. Todos los derechos reservados.</p>
+            <div class="redes-sociales">
+                <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+            </div>
+            <p class="aviso-tienda">No contamos con tienda física. Solo ventas a través de e-commerce.</p>
+            <p class="contacto">Teléfono: +598 99 043 009 | Email: contacto@nuttecreams.com</p>
+        </div>
+    </footer>
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+
+    <script>
+
+        // CONFIGURACIÓN DE FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZ7ZVz4n38gpFJF3o-92pLquoshy1LJXU",
+            authDomain: "nuttecreams.firebaseapp.com",
+            projectId: "nuttecreams",
+            storageBucket: "nuttecreams.appspot.com",
+            messagingSenderId: "772138766185",
+            appId: "1:772138766185:web:0f1dd8b60255096b75f7f8",
+            measurementId: "G-T2966XW90N"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // CARRUSEL DE DESCUENTOS
+        document.addEventListener("DOMContentLoaded", function () {
+            const carrusel = document.querySelector('.carrusel');
+            const diapositivas = document.querySelectorAll('.diapositiva');
+            const anterior = document.querySelector('.boton-carrusel.anterior');
+            const siguiente = document.querySelector('.boton-carrusel.siguiente');
+            let indiceActual = 0;
+
+            function mostrarDiapositiva(indice) {
+                carrusel.style.transform = `translateX(-${indice * 100}%)`;
+            }
+
+            anterior.addEventListener('click', () => {
+                indiceActual = (indiceActual === 0) ? diapositivas.length - 1 : indiceActual - 1;
+                mostrarDiapositiva(indiceActual);
+            });
+
+            siguiente.addEventListener('click', () => {
+                indiceActual = (indiceActual + 1) % diapositivas.length;
+                mostrarDiapositiva(indiceActual);
+            });
+
+            mostrarDiapositiva(indiceActual);
+        });
+
+        // CARRUSEL DE OFERTAS
+        const carruselProductos = document.querySelector('.carrusel-productos');
+        const flechaIzquierda = document.querySelector('.flecha-izquierda');
+        const flechaDerecha = document.querySelector('.flecha-derecha');
+        let indice = 0;
+
+        flechaDerecha.addEventListener('click', () => {
+            if (indice < carruselProductos.children.length - 1) {
+                indice++;
+                actualizarCarrusel();
+            }
+        });
+
+        flechaIzquierda.addEventListener('click', () => {
+            if (indice > 0) {
+                indice--;
+                actualizarCarrusel();
+            }
+        });
+
+        function actualizarCarrusel() {
+            const anchoSlide = carruselProductos.children[0].clientWidth;
+            carruselProductos.style.transform = `translateX(-${anchoSlide * indice}px)`;
+        }
+
+        // CARRITO Y BOLSA
+        const botonCarrito = document.querySelector('.icono-carrito');
+        const carritoLateral = document.getElementById('carritoLateral');
+        const cerrarCarrito = document.getElementById('cerrarCarrito');
+        const fondoOscuro = document.getElementById('fondoOscuro');
+        const botonesAñadir = document.querySelectorAll('.boton-carrito');
+        const carritoContenido = document.getElementById('carritoContenido');
+        const subtotalCarrito = document.getElementById('subtotalCarrito');
+        const carritoPie = document.getElementById('carritoPie');
+        const contadorCarrito = document.getElementById('contadorCarrito');
+
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        function abrirCarrito() {
+            carritoLateral.classList.add('abierto');
+            fondoOscuro.classList.add('activo');
+            mostrarCarrito();
+        }
+
+        function cerrarCarritoFuncion() {
+            carritoLateral.classList.remove('abierto');
+            fondoOscuro.classList.remove('activo');
+        }
+
+        function agregarProducto(nombre, precio, imagen) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, imagen, cantidad: 1 });
+            }
+            guardarCarrito();
+            mostrarCarrito();
+        }
+
+        function eliminarProducto(nombre) {
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            guardarCarrito();
+            mostrarCarrito();
+        }
+
+        function guardarCarrito() {
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+
+        function calcularSubtotal() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            return carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
+        }
+
+        function contarProductos() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            return carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        }
+
+        function mostrarCarrito() {
+            carritoContenido.innerHTML = '';
+
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            if (carrito.length === 0) {
+                carritoContenido.innerHTML = '<p class="carrito-vacio">Tu bolsa está vacía.</p>';
+                carritoPie.style.display = 'none';
+            } else {
+                carrito.forEach(producto => {
+                    const div = document.createElement('div');
+                    div.classList.add('carrito-producto');
+
+                    const precioConDescuento = producto.precio;
+
+                    div.innerHTML = `
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <div class="carrito-detalles">
+                    <p class="nombre-producto">${producto.nombre}</p>
+                    <p class="precio-producto" style="color: var(--color-secundario); font-weight: bold;">
+                        UYU $${precioConDescuento} x ${producto.cantidad}
+                    </p>
+                </div>
+                <button class="boton-eliminar-producto" onclick="eliminarProducto('${producto.nombre}')">&times;</button>
+            `;
+                    carritoContenido.appendChild(div);
+                });
+
+                subtotalCarrito.textContent = `UYU $${calcularSubtotal()}`;
+                carritoPie.style.display = 'block';
+            }
+
+            contadorCarrito.textContent = contarProductos();
+        }
+
+        botonCarrito.addEventListener('click', abrirCarrito);
+        cerrarCarrito.addEventListener('click', cerrarCarritoFuncion);
+        fondoOscuro.addEventListener('click', cerrarCarritoFuncion);
+
+        // AGREGAR PRODUCTOS AL CARRITO
+        botonesAñadir.forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                const tarjeta = e.target.closest('.tarjeta-producto');
+                const nombre = tarjeta.querySelector('.titulo-producto').textContent;
+
+                let precio;
+                if (tarjeta.dataset.precio) {
+                    precio = parseInt(tarjeta.dataset.precio);
+                } else {
+                    const precioTexto = tarjeta.querySelector('.precio-producto span:last-child').textContent;
+                    precio = parseInt(precioTexto.replace(/\D/g, ''));
+                }
+
+                const imagen = tarjeta.querySelector('.imagen-producto img').getAttribute('src');
+                agregarProducto(nombre, precio, imagen);
+            });
+        });
+
+        mostrarCarrito();
+
+        // SALUDO EN HEADER
+        const contenedorSaludo = document.getElementById('contenedorSaludo');
+
+        auth.onAuthStateChanged(async (usuario) => {
+            if (usuario) {
+                const correo = usuario.email;
+                try {
+                    const docUsuario = await db.collection('usuarios').doc(usuario.uid).get();
+                    if (!docUsuario.exists) {
+                        // 🔥 Usuario borrado en Firestore pero sigue logueado: Cerrar sesión
+                        await auth.signOut();
+                        window.location.reload();
+                        return;
+                    }
+                    const puntos = docUsuario.data().puntos || 0;
+                    const correoCorto = correo.split('@')[0];
+
+                    contenedorSaludo.innerHTML = `
+                <span class="texto-saludo">¡Hola, ${correoCorto}!</span>
+                <span class="badge-puntos">${puntos} pts</span>
+            `;
+                } catch (error) {
+                    console.error('Error al obtener puntos:', error.message);
+                }
+            } else {
+                contenedorSaludo.innerHTML = `
+            <a href="register.html"><i class='bx bx-user icono-cuenta'></i></a>
+        `;
+            }
+        });
+
+        // APLICAR DESCUENTO SI ESTÁ LOGUEADO
+        auth.onAuthStateChanged((usuario) => {
+            if (usuario) {
+                aplicarDescuentoProductos();
+                aplicarDescuentoCarrito();
+            }
+        });
+
+        function aplicarDescuentoProductos() {
+            const tarjetas = document.querySelectorAll('.tarjeta-producto');
+
+            tarjetas.forEach(tarjeta => {
+                const precioSpan = tarjeta.querySelector('.precio-producto span');
+                const precioOriginal = parseFloat(precioSpan.textContent.replace(/\D/g, ''));
+
+                const precioConDescuento = Math.round(precioOriginal * 0.9);
+
+                precioSpan.innerHTML = `
+            <span style="text-decoration: line-through; color: gray; font-size: 0.9rem;">UYU $${precioOriginal}</span><br>
+            <span style="color: var(--color-secundario); font-weight: bold;">UYU $${precioConDescuento}</span>
+        `;
+
+                tarjeta.dataset.precio = precioConDescuento;
+            });
+        }
+
+        function aplicarDescuentoCarrito() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let carritoConDescuento = carrito.map(item => {
+                return {
+                    ...item,
+                    precioOriginal: item.precioOriginal || item.precio,
+                    precio: Math.round((item.precioOriginal || item.precio) * 0.9)
+                };
+            });
+            localStorage.setItem('carrito', JSON.stringify(carritoConDescuento));
+            mostrarCarrito();
+        }
+
+        function alternarAcordeon(pregunta) {
+            const respuesta = pregunta.nextElementSibling;
+            const flecha = pregunta.querySelector('.acordeon-flecha');
+
+            respuesta.classList.toggle('activo');
+            flecha.classList.toggle('rotar-flecha');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const preguntas = document.querySelectorAll('.acordeon-pregunta');
+            preguntas.forEach(pregunta => {
+                pregunta.addEventListener('click', function () {
+                    const flecha = this.querySelector('.acordeon-flecha');
+                    flecha.classList.toggle('rotar-flecha');
+                });
+            });
+        });
+        
+    </script>
+
+</body>
+
+</html>

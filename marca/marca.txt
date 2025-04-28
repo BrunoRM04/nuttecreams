@@ -1,0 +1,11 @@
+== COLORES DE MARCA ==
+
+#e3b98d 
+#5e3c2c
+
+== COLORES DE MARCA ==
+
+
+== efectivo y si los puntos cubren el costo total del producto y queda en 0 también que aparezca un aviso que su pedido esta hecho.
+== vincular con mercado pago el debito y credito.
+== MERCADO PAGO
