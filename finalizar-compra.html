@@ -191,7 +191,6 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // Variables principales
         const metodoPago = document.getElementById('metodo-pago');
         const campoMonto = document.getElementById('campo-monto');
         const formularioEnvio = document.getElementById('formulario-envio');
@@ -206,12 +205,10 @@
         let costoEnvio = 0;
         const costoEnvioFijo = 200;
 
-        // Mostrar y ocultar campo monto efectivo
         metodoPago.addEventListener('change', function () {
             campoMonto.style.display = this.value === 'efectivo' ? 'block' : 'none';
         });
 
-        // Detectar cambio en Departamento
         selectDepartamento.addEventListener('change', () => {
             if (selectDepartamento.value.toLowerCase() !== 'montevideo') {
                 costoEnvio = costoEnvioFijo;
@@ -221,7 +218,6 @@
             mostrarResumenCompra(descuentoAplicado);
         });
 
-        // Funciones carrito
         function calcularSubtotal() {
             return carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
         }
